@@ -2,6 +2,21 @@ package adn;
 
 public class StructTigeBoucle {
     
+    /**
+     * Contraintes associé à la structure
+     * - toutes ces valeurs sont incluses en max et en min
+     * */
+    final int MAX_LONGUEUR = 100;
+    final int MIN_LONGUEUR = 70;
+    final int MIN_NB_APPARIEMENT = 24;
+    final int MIN_TAILLE_GROUPE_APPARIEMENT = 3;
+    final int MAX_TAILLE_BOUCLE_TERMINAL = 8;
+    final int MAX_TAILLE_GROUPE_NON_APPARIES = 3;
+    //TODO penser la représentation des correspondances des appariements. S'inspirer du TP 1 avec la generation de motif.
+    
+    /**
+     * Parametres de la structure
+     * */
     // Nombre de nucléotides que contient la structure
     int taille;
     // Nombre d'appariements que contient la structure
