@@ -24,7 +24,8 @@ public class StructTigeBoucle {
     public int getNombre_autres_boucles() {
         return nombre_autres_boucles;
     }
-    
-    
+    public int getNombre_nucléotides_apparies() {
+        return nombre_appariements * 2;
+    }
     
 }
