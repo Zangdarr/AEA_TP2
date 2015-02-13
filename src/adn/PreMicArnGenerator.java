@@ -14,6 +14,10 @@ public class PreMicArnGenerator {
         this.contrainte = contrainte;
     }
     
+    public String generate(){
+             
+        return null;
+    }
     
 
 }
