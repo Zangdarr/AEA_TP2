@@ -61,13 +61,6 @@ public class StructTigeBoucle {
             int taille__boucle_terminal) {
         super();
         Random rnd = new Random(System.currentTimeMillis());
-        
-        this.taille = (taille<0)
-                            ?MIN_LONGUEUR + rnd.nextInt(1 + MAX_LONGUEUR - MIN_LONGUEUR)
-                            : (taille<MIN_LONGUEUR)
-                                    ?MIN_LONGUEUR
-                                    :taille
-        ;
                                                  
         this.nombre_appariements = (nombre_appariements<0)
                                                 ?MIN_NB_APPARIEMENT + rnd.nextInt((1 +  this.taille/2 - MIN_NB_APPARIEMENT))
@@ -86,6 +79,14 @@ public class StructTigeBoucle {
         //TODO : Pour l'instant ce paramètre sera à zéro. La gestion des boucles latérales se fera plus tard.
         this.nombre_autres_boucles = 0;
         ;
+        this.taille = ((taille<0)
+                ?MIN_LONGUEUR + rnd.nextInt(1 + MAX_LONGUEUR - MIN_LONGUEUR)
+                        : (taille<MIN_LONGUEUR)
+                        ?MIN_LONGUEUR
+                                : (taille>MAX_LONGUEUR)
+                                ? MAX_LONGUEUR
+                                        : taille)
+                                        ;
     }
     
     
