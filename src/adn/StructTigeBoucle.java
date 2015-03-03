@@ -58,7 +58,7 @@ public class StructTigeBoucle {
      * Ce paramètre sera gérer plus tard. Pour limiter la complexité du programme pour l'instant.
      */
     public StructTigeBoucle(int taille, int nombre_appariements,
-            int taille__boucle_terminal, int nombre_autres_boucles) {
+            int taille__boucle_terminal) {
         super();
         Random rnd = new Random(System.currentTimeMillis());
         
