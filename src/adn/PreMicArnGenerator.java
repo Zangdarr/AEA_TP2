@@ -28,10 +28,14 @@ public class PreMicArnGenerator {
         this.contrainte = contrainte;
     }
 
+    /**
+     * Génère un squelette de parenthèses et de points pour réprésenter un MicroARN
+     * @return une chaîne de caractère réprésentant la strucutre parenthésée finale
+     * @throws GeneratorException : Si la génération est impossible en un lapse de temps raisonable
+     */
+    public String generate() throws GeneratorException{
+    }
     
-    public String generate(){
-             
-        return null;
     /**
      * Ajout aléatoire des groupes dans l'ensemble en respectant les contraintes de groupement des parenthèses.
      * @param result : chaîne de départ
