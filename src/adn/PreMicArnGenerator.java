@@ -48,6 +48,19 @@ public class PreMicArnGenerator {
         addNChar(result, '.', this.contrainte.getTaille__boucle_terminal());
         addNChar(result, ')', this.contrainte.getNombre_appariements());
         // rédult  ~= (((((((....)))))))
+
+
+        
+        
+        /*****************************************************************************************
+         * Étape 2 : génération aléatoire de groupes de points de taille variant de 1 a 3 pour respecter la contrainte du groupement des points
+         */
+        //points qu'il faut ajouter pour atteindre la taille voulue
+        points_remain = this.contrainte.getTaille() - this.contrainte.getNombre_nucléotides_apparies() - this.contrainte.getTaille__boucle_terminal();
+
+        //génération de la liste de groupes de points aléatoires
+        groupes_points = genPointGroup(points_remain);
+        // groupe_points ~= {"...",".","..","."}
     }
     
     /**
