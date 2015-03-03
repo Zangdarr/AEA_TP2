@@ -61,20 +61,6 @@ public class StructTigeBoucle {
             int taille__boucle_terminal) {
         super();
         Random rnd = new Random(System.currentTimeMillis());
-                                                 
-        this.nombre_appariements = (nombre_appariements<0)
-                                                ?MIN_NB_APPARIEMENT + rnd.nextInt((1 +  this.taille/2 - MIN_NB_APPARIEMENT))
-                                                : (taille<MIN_NB_APPARIEMENT)
-                                                        ? MIN_NB_APPARIEMENT
-                                                        : nombre_appariements 
-        ;
-        
-        this.taille__boucle_terminal = (taille__boucle_terminal<0)
-                                                ? rnd.nextInt(1 + MAX_TAILLE_BOUCLE_TERMINAL)
-                                                : (taille__boucle_terminal>MAX_TAILLE_BOUCLE_TERMINAL)
-                                                        ? MAX_TAILLE_BOUCLE_TERMINAL
-                                                        : taille__boucle_terminal
-        ;
 
         //TODO : Pour l'instant ce paramètre sera à zéro. La gestion des boucles latérales se fera plus tard.
         this.nombre_autres_boucles = 0;
@@ -87,10 +73,26 @@ public class StructTigeBoucle {
                                 ? MAX_LONGUEUR
                                         : taille)
                                         ;
+
+        this.taille__boucle_terminal = ((taille__boucle_terminal<0)
+                ? rnd.nextInt(1 + MAX_TAILLE_BOUCLE_TERMINAL)
+                        : (taille__boucle_terminal>MAX_TAILLE_BOUCLE_TERMINAL)
+                        ? MAX_TAILLE_BOUCLE_TERMINAL
+                                : taille__boucle_terminal)
+                                ;
+        this.nombre_appariements = ((nombre_appariements<0)
+                ?MIN_NB_APPARIEMENT + rnd.nextInt((1 +  this.taille/2 - MIN_NB_APPARIEMENT - this.taille__boucle_terminal))
+                        : (nombre_appariements<MIN_NB_APPARIEMENT)
+                        ? MIN_NB_APPARIEMENT
+                                : (nombre_appariements>taille/2 - this.taille__boucle_terminal/2 - this.taille__boucle_terminal%2)
+                                ? taille/2 - this.taille__boucle_terminal/2 - this.taille__boucle_terminal%2
+                                        : nombre_appariements)
+                                        ;
+
     }
-    
-    
-    
+
+
+
     //GETTER - SETTER    
     public int getTaille() {
         return taille;
