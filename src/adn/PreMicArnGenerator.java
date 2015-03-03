@@ -36,6 +36,13 @@ public class PreMicArnGenerator {
     
 
 
+    private StringBuffer addNChar(StringBuffer str, char c, int nb_times){
+        for (int i = 0; i < nb_times; i++) 
+            str.append(c);
+
+        return str;
+    }
+
     private String genPaireNonApparieNucleotide() {
         Random rnd = new Random(System.currentTimeMillis());
         int paire_choisie = rnd.nextInt(3);
