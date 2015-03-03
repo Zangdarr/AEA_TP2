@@ -101,4 +101,14 @@ public class StructTigeBoucle {
     public int getNombre_nucléotides_apparies() {
         return nombre_appariements * 2;
     }
+
+    //Affichage Informations
+    public void printCaracteristics(){
+
+
+        System.out.println("Nombre de nucléotides que contient la structure : " + taille +
+                "\nNombre d'appariements que contient la structure : " + nombre_appariements +
+                "\nTaille de la boucle terminal situé au mileu de la structure : " + taille__boucle_terminal);
+
+    }
 }
