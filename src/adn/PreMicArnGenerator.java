@@ -27,6 +27,19 @@ public class PreMicArnGenerator {
         super();
         this.contrainte = contrainte;
     }
+    
+    /**
+     * Convertie un squelette de parenthèse et de point en une structre de nucléotide valide.
+     * @param skeleton : contrainte de génération
+     * @return une chaîne de nucléotide basé sur le squelette passé en paramètre.
+     */
+    public StringBuffer convertBoneToPreMiC(StringBuffer skeleton){
+        StringBuffer result = new StringBuffer();
+        
+        
+        
+        return result;
+    }
 
     /**
      * Génère un squelette de parenthèses et de points pour réprésenter un MicroARN
