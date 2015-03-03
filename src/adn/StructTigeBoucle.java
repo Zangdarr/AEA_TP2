@@ -25,11 +25,9 @@ public class StructTigeBoucle {
     int nombre_appariements;
     // Taille de la boucle terminal situé au mileu de la structure
     int taille__boucle_terminal;
-    // Quantité de boucles autres que la terminal
-    int nombre_autres_boucles;
-    
-    
-    
+
+
+
     /**
      * Constructeur par default. Toute les valeur initiale sont aléatoire.
      */
@@ -62,9 +60,6 @@ public class StructTigeBoucle {
         super();
         Random rnd = new Random(System.currentTimeMillis());
 
-        //TODO : Pour l'instant ce paramètre sera à zéro. La gestion des boucles latérales se fera plus tard.
-        this.nombre_autres_boucles = 0;
-        ;
         this.taille = ((taille<0)
                 ?MIN_LONGUEUR + rnd.nextInt(1 + MAX_LONGUEUR - MIN_LONGUEUR)
                         : (taille<MIN_LONGUEUR)
@@ -103,11 +98,7 @@ public class StructTigeBoucle {
     public int getTaille__boucle_terminal() {
         return taille__boucle_terminal;
     }
-    public int getNombre_autres_boucles() {
-        return nombre_autres_boucles;
-    }
     public int getNombre_nucléotides_apparies() {
         return nombre_appariements * 2;
     }
-    
 }
