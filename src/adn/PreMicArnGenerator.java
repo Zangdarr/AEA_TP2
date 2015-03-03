@@ -34,6 +34,9 @@ public class PreMicArnGenerator {
      * @throws GeneratorException : Si la génération est impossible en un lapse de temps raisonable
      */
     public String generate() throws GeneratorException{
+        StringBuffer result;              //stockera le résultat final
+        int points_remain;                //nombre de points pour les boucles latérales
+        ArrayList<String> groupes_points; //liste aléatoire de groupes de points de taille 1 à 3 points
     }
     
     /**
