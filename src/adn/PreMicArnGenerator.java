@@ -15,7 +15,13 @@ public class PreMicArnGenerator {
     private StructTigeBoucle contrainte;
 
 
-
+    /**
+     * Constructeur par defaut : les contraintes sont aléatoires borné
+     */
+    public PreMicArnGenerator() {
+        super();
+        contrainte = new StructTigeBoucle();
+    }
 
     public PreMicArnGenerator(StructTigeBoucle contrainte) {
         super();
