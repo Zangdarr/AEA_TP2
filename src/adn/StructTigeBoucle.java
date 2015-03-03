@@ -42,7 +42,6 @@ public class StructTigeBoucle {
         this.nombre_appariements = MIN_NB_APPARIEMENT + rnd.nextInt(1 +  this.taille/2 - MIN_NB_APPARIEMENT - this.taille__boucle_terminal/2);
 
         //TODO : Pour l'instant ce paramètre sera à zéro. La gestion des boucles latérales se fera plus tard.
-        this.nombre_autres_boucles = 0;
     }
 
 
