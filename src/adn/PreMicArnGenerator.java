@@ -38,12 +38,11 @@ public class PreMicArnGenerator {
         int points_remain;                //nombre de points pour les boucles latérales
         ArrayList<String> groupes_points; //liste aléatoire de groupes de points de taille 1 à 3 points
         
-        /*
+        /****************************************************************************************
          * Étape 1 : génération de la structure parenthésée ave cla boucle terminal en son centre
          */
-        
         result = new StringBuffer();
-
+        
         //Structure global : des parenthèse encadrant la boucle terminal
         addNChar(result, '(', this.contrainte.getNombre_appariements());
         addNChar(result, '.', this.contrainte.getTaille__boucle_terminal());
