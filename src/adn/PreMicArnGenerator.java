@@ -36,6 +36,21 @@ public class PreMicArnGenerator {
     
 
 
+    private String genPaireNonApparieNucleotide() {
+        Random rnd = new Random(System.currentTimeMillis());
+        int paire_choisie = rnd.nextInt(3);
+        int ordre_choisi  = rnd.nextInt(2);
+        String result = "";
+        switch(paire_choisie){
+        case 0 : 
+            result = (ordre_choisi == 0)?"AU" : "UA";
+        case 1 :
+            result = (ordre_choisi == 0)?"GC" : "CG";
+        case 2 :
+            result = (ordre_choisi == 0)?"GU" : "UG";
+        }
+        return result;
+    }
 
     /**
      * Génère une paire de nucléotides apparieable aléatoirement
