@@ -208,6 +208,32 @@ public class PreMicArnGenerator {
         return result;
     }
     
+    private char genApparieNucleotide(char c) throws GeneratorException {
+        Random rnd = new Random(System.currentTimeMillis());
+        int choice;
+        char result = ' ';
+        
+        switch(c){
+        case 'A' : 
+            result =  'U';
+            break;
+        case 'C' :
+            result = 'G';
+            break;
+        case 'U' :
+            choice = rnd.nextInt(2);
+            result = (choice == 0)?'A':'G';
+            break;
+        case 'G' :
+            choice = rnd.nextInt(2);
+            result = (choice == 0)?'C':'U';
+        default : 
+            throw new GeneratorException(1);
+        
+        }
+        return result;
+    }
+    
     private String genPaireNonApparieNucleotide() {
         Random rnd = new Random(System.currentTimeMillis());
         int paire_choisie = rnd.nextInt(3);
