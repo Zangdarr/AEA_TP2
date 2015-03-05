@@ -87,28 +87,29 @@ public class PreMicArnGenerator {
 
     /**
      * Génère un squelette de parenthèses et de points pour réprésenter un MicroARN
-     * @return une chaîne de caractère réprésentant la strucutre parenthésée finale
+     * @return une chaîne de caractères réprésentant la strucutre parenthésée finale
      * @throws GeneratorException : Si la génération est impossible en un lapse de temps raisonable
      */
     public String generate() throws GeneratorException{
         StringBuffer result;              //stockera le résultat final
         int points_remain;                //nombre de points pour les boucles latérales
         ArrayList<String> groupes_points; //liste aléatoire de groupes de points de taille 1 à 3 points
-        
+
         /****************************************************************************************
-         * Étape 1 : génération de la structure parenthésée ave cla boucle terminal en son centre
+         * Étape 1 : génération de la structure parenthésée avec la boucle terminal en son centre
          */
         result = new StringBuffer();
-        
-        //Structure global : des parenthèse encadrant la boucle terminal
+
+        //Structure globale : des parenthèses encadrant la boucle terminal
         addNChar(result, '(', this.contrainte.getNombre_appariements());
         addNChar(result, '.', this.contrainte.getTaille__boucle_terminal());
         addNChar(result, ')', this.contrainte.getNombre_appariements());
-        // rédult  ~= (((((((....)))))))
+        
+        // résult  ~= (((((((....)))))))
 
 
-        
-        
+
+
         /*****************************************************************************************
          * Étape 2 : génération aléatoire de groupes de points de taille variant de 1 a 3 pour respecter la contrainte du groupement des points
          */
