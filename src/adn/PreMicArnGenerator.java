@@ -118,24 +118,29 @@ public class PreMicArnGenerator {
 
         //génération de la liste de groupes de points aléatoires
         groupes_points = genPointGroup(points_remain);
+        
         // groupe_points ~= {"...",".","..","."}
-        
-        
-        
-        
+
+
+
         /*****************************************************************************************
          * Étape 3 : Ajout aléatoire des groupes de points dans la structure parenthésée
          */
-        
+
         //ajout aléatoire des groupes dans l'ensemble en respectant les contraintes de groupement des parenthèses
         result = addAleaPoint(result, groupes_points, points_remain);
+        
         //result ~= ((((.(((..((((.(((.(((...((((..(((...(((((.......)))))...)))))..)))...)))))...))))..)))))))
 
-
-        //retour de la structure achevé rexpectant les contraintes données par la structure TigeBoucle
+        
+        
+        /*****************************************************************************************
+         * Étape 4 : Renvoie de la structure achevée respectant les contraintes données par la structure TigeBoucle
+         */
         return result.toString();
-    }
     
+    }
+
     /**
      * Ajout aléatoire des groupes dans l'ensemble en respectant les contraintes de groupement des parenthèses.
      * @param result : chaîne de départ
