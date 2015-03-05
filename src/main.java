@@ -1,5 +1,3 @@
-import java.util.Random;
-
 import exception.GeneratorException;
 import adn.PreMicArnGenerator;
 import adn.StructTigeBoucle;
