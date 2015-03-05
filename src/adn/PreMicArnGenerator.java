@@ -32,12 +32,53 @@ public class PreMicArnGenerator {
      * @param skeleton : contrainte de génération
      * @return une chaîne de nucléotide basé sur le squelette passé en paramètre.
      */
-    public StringBuffer convertBoneToPreMiC(StringBuffer skeleton){
-        StringBuffer result = new StringBuffer();
+    public StringBuffer convertBoneToPreMiC(StringBuffer skeleton) throws GeneratorException{
+        StringBuffer result = new StringBuffer(); // chaîne résultat
+        int pos_deb = 0, // déplacement dans le squelette : position de départ
+                pos_fin = skeleton.length()-1; //déplacmeent dans le squelette : position de fin
         
-        
-        
-        return result;
+        char char_deb, // caractère du squelette à pos_deb
+        char_fin; // caractère du squelette à pos_fin
+
+        while(pos_deb <= pos_fin) { // tant qu'on a pas tout parcouru
+            char_deb = skeleton.charAt(pos_deb); //récupération du caractère à pos_deb
+            char_fin = skeleton.charAt(pos_fin); //récupération du caractère à pos_fin
+
+            if(pos_deb == pos_fin) { // si la taille est impaire, ce cas survint à la fin
+                //il s'agit forcément d'un point
+                char tmp = genApparieNucleotide('z'); //génération d'un caractère aléatoire
+                result.insert(pos_deb, tmp); //insertion du caractère
+                pos_deb++; //avancée de pos_deb -> fin de la boucle
+            }
+            else if((char_deb == '(' && char_fin == ')') || (char_deb == '.' && char_fin == '.')){//s'il les deux char à traiter sont identiques
+                
+                if(char_deb == '('){//s'il s'agit d'une paire de parenthèse
+                    String tmp = genPaireApparieNucleotide(); // génération d'une paire apparieable de nucléotides
+                    result.insert(pos_deb, tmp.charAt(1)); //insertion du caractère pour la parenthèse fermante
+                    result.insert(pos_deb, tmp.charAt(0)); //insertion du caractère pour la parenthèse ouvrante
+                }
+                else{
+                    String tmp = genPaireNonApparieNucleotide(); // génération d'une paire non apparieable de nucléotides
+                    result.insert(pos_deb, tmp.charAt(1));//insertion du caractère pour la parenthèse fermante
+                    result.insert(pos_deb, tmp.charAt(0));//insertion du caractère pour la parenthèse ouvrante
+                }
+                pos_deb++;//avancée de pos_deb
+                pos_fin--;//avancée de pos_fin
+            }
+            else{// les deux sont différents
+                if(char_deb == '('){//si parenthèse ouvrante -> char_fin == '.'
+                    char tmp = genNonApparieNucleotide('z');//génération d'un nucléotide aléatoire non apparieable
+                    result.insert(pos_deb, tmp);//insertion du caractère pour le point
+                    pos_fin--;//avancée de pos_fin
+                }
+                else{//point -> char_fin == ')'
+                    char tmp = genNonApparieNucleotide('z');//génération d'un nucléotide aléatoire non apparieable
+                    result.insert(pos_deb, tmp);//insertion du caractère pour le point
+                    pos_deb++;//avancée de pos_deb
+                }
+            }
+        }
+        return result;//renvoie de la chaîne de nucléotides achevée
     }
 
     /**
