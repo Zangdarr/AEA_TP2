@@ -280,24 +280,17 @@ public class PreMicArnGenerator {
             break;
         default : 
             throw new GeneratorException(1);
-        
+
         }
         return result;
     }
-    
-    private String genPaireNonApparieNucleotide() {
-        Random rnd = new Random(System.currentTimeMillis());
-        int paire_choisie = rnd.nextInt(3);
-        int ordre_choisi  = rnd.nextInt(2);
-        String result = "";
-        switch(paire_choisie){
-        case 0 : 
-            result = (ordre_choisi == 0)?"AU" : "UA";
-        case 1 :
-            result = (ordre_choisi == 0)?"GC" : "CG";
-        case 2 :
-            result = (ordre_choisi == 0)?"GU" : "UG";
-        }
+    private String genPaireNonApparieNucleotide() throws GeneratorException {
+        SecureRandom rand = new SecureRandom();
+        
+        char c1 = genNonApparieNucleotide('z'),// un caractère au hasard
+             c2 = genNonApparieNucleotide(c1); // un caractère non apparieable à c
+        String result = "" + c1 + c2;
+        
         return result;
     }
 
@@ -305,19 +298,13 @@ public class PreMicArnGenerator {
      * Génère une paire de nucléotides apparieable aléatoirement
      * @return
      */
-    private String genPaireApparieNucleotide() {
-        Random rnd = new Random(System.currentTimeMillis());
-        int paire_choisie = rnd.nextInt(3);
-        int ordre_choisi  = rnd.nextInt(2);
-        String result = "";
-        switch(paire_choisie){
-        case 0 : 
-            result = (ordre_choisi == 0)?"AU" : "UA";
-        case 1 :
-            result = (ordre_choisi == 0)?"GC" : "CG";
-        case 2 :
-            result = (ordre_choisi == 0)?"GU" : "UG";
-        }
+    private String genPaireApparieNucleotide() throws GeneratorException {
+        SecureRandom rand = new SecureRandom();
+        
+        char c1 = genApparieNucleotide('z'),// un caractère au hasard
+             c2 = genApparieNucleotide(c1); // un caractère apparieable à c
+        String result = "" + c1 + c2;
+        
         return result;
     }
 
