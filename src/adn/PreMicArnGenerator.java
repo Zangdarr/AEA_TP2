@@ -205,7 +205,7 @@ public class PreMicArnGenerator {
      * @return une liste avec pour contenu des chaînes de caractères constitué de 1 à 3 points
      */
     public ArrayList<String> genPointGroup(int nombre_de_points){
-        Random rand = new Random(System.currentTimeMillis());
+        SecureRandom rand = new SecureRandom();
 
       //génération aléatoire de groupes de points
         ArrayList<String> groupes_points = new ArrayList<String>();
