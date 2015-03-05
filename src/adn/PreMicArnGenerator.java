@@ -226,6 +226,13 @@ public class PreMicArnGenerator {
         return groupes_points;
     }
 
+    /**
+     * Ajoute nb_times fois le caractère c à la chaîne de caractères bufferisée str
+     * @param str : chaîne à modifier
+     * @param c   : caractère qui doit être ajouté
+     * @param nb_times : nombre de fois que l'ajout doit être effectué
+     * @return la chaîne de cractères bufferisé avec nb_times fois le caractère c à sa fin 
+     */
     private StringBuffer addNChar(StringBuffer str, char c, int nb_times){
         for (int i = 0; i < nb_times; i++) 
             str.append(c);
