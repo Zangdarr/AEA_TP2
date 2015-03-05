@@ -241,6 +241,11 @@ public class PreMicArnGenerator {
         case 'G' :
             choice = rnd.nextInt(2);
             result = (choice == 0)?'A':'G';
+            break;
+        case 'z' :
+            choice = rnd.nextInt(4);
+            result = (choice == 0)?'A': (choice == 1)?'U': (choice == 2)?'G' : 'C' ;
+            break;
         default : 
             throw new GeneratorException(1);
         
@@ -267,6 +272,11 @@ public class PreMicArnGenerator {
         case 'G' :
             choice = rnd.nextInt(2);
             result = (choice == 0)?'C':'U';
+            break;
+        case 'z' :
+            choice = rnd.nextInt(4);
+            result = (choice == 0)?'A': (choice == 1)?'U': (choice == 2)?'G' : 'C' ;
+            break;
         default : 
             throw new GeneratorException(1);
         
