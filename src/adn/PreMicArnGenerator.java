@@ -221,7 +221,7 @@ public class PreMicArnGenerator {
 
     
     private char genNonApparieNucleotide(char c) throws GeneratorException {
-        Random rnd = new Random(System.currentTimeMillis());
+        SecureRandom rnd = new SecureRandom();
         int choice;
         char result = ' ';
         
@@ -254,7 +254,8 @@ public class PreMicArnGenerator {
     }
     
     private char genApparieNucleotide(char c) throws GeneratorException {
-        Random rnd = new Random(System.currentTimeMillis());
+
+        SecureRandom rnd = new SecureRandom();
         int choice;
         char result = ' ';
         
