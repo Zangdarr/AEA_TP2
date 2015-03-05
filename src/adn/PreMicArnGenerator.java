@@ -200,16 +200,17 @@ public class PreMicArnGenerator {
     }
 
     /**
-     * Génération aléatoir de groupes de points de taille inférieur ou égal à 3 en utilisant le nombre de point fournit en paramètre
+     * Génération aléatoire de groupes de points de taille inférieur ou égale à 3 en utilisant le nombre de point fournit en paramètre
      * @param nombre_de_points : nombre de points qui devront être utilisés
      * @return une liste avec pour contenu des chaînes de caractères constitué de 1 à 3 points
      */
     public ArrayList<String> genPointGroup(int nombre_de_points){
         SecureRandom rand = new SecureRandom();
 
-      //génération aléatoire de groupes de points
+        //génération aléatoire de groupes de points
         ArrayList<String> groupes_points = new ArrayList<String>();
-        while(nombre_de_points > 0 ){
+        while(nombre_de_points > 0 ){ //tant que l'on a pas placé tous les points
+            
             int tmp_int = rand.nextInt(4);                                
             StringBuffer tmp_str = new StringBuffer();
 
@@ -218,9 +219,10 @@ public class PreMicArnGenerator {
             }
             addNChar(tmp_str, '.', tmp_int);
             nombre_de_points -= tmp_int;
-            groupes_points.add(tmp_str.toString());
+            
+            groupes_points.add(tmp_str.toString()); // ajout du groupe du points généré
         }
-        
+
         return groupes_points;
     }
 
