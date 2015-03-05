@@ -145,58 +145,60 @@ public class PreMicArnGenerator {
      * Ajout aléatoire des groupes dans l'ensemble en respectant les contraintes de groupement des parenthèses.
      * @param result : chaîne de départ
      * @param groupes_points : groupes de points à insérer
-     * @param points_remain : nombre de points contenu dans l'ensemble des groupes de points
+     * @param points_remain : nombre de points contenus dans l'ensemble des groupes de points
      * @return un buffer de chaîne réprésentant la structure parenthésée finale
      * @throws GeneratorException Si la génération est impossible en un lapse de temps raisonable
      */
     public StringBuffer addAleaPoint(StringBuffer result, ArrayList<String> groupes_points, int points_remain) throws GeneratorException {
-        StringBuffer tmp = new StringBuffer(result.toString()); //pour contrer les boucle infini (impossibilité de placer les point en respectant les contraintes
-        ArrayList<String> list_tmp = groupes_points;
-        int nombre_iteration = 0; //on va admettre que après 200 itérations on peut recommencer le placement de zéro
-        int nombre_relance = 0;
+        StringBuffer tmp = new StringBuffer(result.toString()); //pour contrer les boucles infinies (impossibilité de placer les points en respectant les contraintes
+        int nombre_iteration = 0; //on va admettre qu'après 100000 itérations on peut recommencer le placement de zéro
+        int nombre_relance = 0;   //on va admettre qu'après 10 relance on peut abandonner 
+        SecureRandom rand = new SecureRandom(); //générateur de nombre pseudo aléatoire satisfesant
+
+
+        Collections.shuffle(groupes_points); //on mélange la liste
         
+        int rand_position = 0; //position choisie aléatoirement 
         
-        //générateur de nombre pseudo aléatoire satisfesant
-        Random rand = new Random(System.currentTimeMillis());
-        Collections.shuffle(groupes_points);
-        int rand_position = 0;
-        //boucle d'ajout des groupes de points
-        while(!groupes_points.isEmpty()){
-            //position potentiel
-            rand_position = rand.nextInt(tmp.length()-6)+3;
-            //on n'ajoute pas à côté d'un autre groupe de point
-            if(tmp.charAt(rand_position-1) != '.' || tmp.charAt(rand_position+1) != '.'){
+        while(!groupes_points.isEmpty()){ //boucle d'ajout des groupes de points
+
+            rand_position = rand.nextInt(tmp.length()-6)+3; //position potentiel à tester
+            
+            if(tmp.charAt(rand_position-1) != '.' || tmp.charAt(rand_position+1) != '.'){ //on n'ajoute pas à côté d'un autre groupe de point
+                //on ajoute si la position est encerclée par trois parenthèses gauches de chaque côtés
                 if(tmp.subSequence(rand_position, rand_position+3).equals("(((") && tmp.subSequence(rand_position-3, rand_position).equals("(((") ){
-                    tmp.insert(rand_position, groupes_points.get(0));
-                    groupes_points.remove(0);
+                    tmp.insert(rand_position, groupes_points.get(0));//insertion du groupe de points à la rand_position
+                    groupes_points.remove(0);//retrait du groupe à la liste
                 }
+                //on ajoute si la position est encerclée par trois parenthèses droites de chaque côtés
                 if(tmp.subSequence(rand_position, rand_position+3).equals(")))") && tmp.subSequence(rand_position-3, rand_position).equals(")))") ){
-                    tmp.insert(rand_position, groupes_points.get(0));
-                    groupes_points.remove(0);
+                    tmp.insert(rand_position, groupes_points.get(0));//insertion du groupe de points à la rand_position
+                    groupes_points.remove(0);//retrait du groupe à liste
                 }
             }
-            // Limitation des boucles infinies. Ne suffit parfois pas.
-            if(++nombre_iteration> 100000){
+            /**
+             * Limitation des boucles infinies.
+             */
+            if(++nombre_iteration> 100000){ //si plus de 100K itérations
                 System.out.println("Nombre d'itération dépassé. On relance");
-                //groupe de points initiaux regénérés
-                groupes_points = genPointGroup(points_remain);
-                Collections.shuffle(groupes_points);
-                //Structure vierge de parenthèse avec la boucle terminal
-                tmp = new StringBuffer(result.toString());
-                //réinitialisation du compteur
-                nombre_iteration = 0;
+                
+                groupes_points = genPointGroup(points_remain); //groupe de points initiaux regénérés
+                Collections.shuffle(groupes_points); // mélange de la liste
+                
+                tmp = new StringBuffer(result.toString()); //Structure vierge de parenthèses avec la boucle terminal
+                
+                nombre_iteration = 0;//réinitialisation du compteur
 
-                if(++nombre_relance> 10){
-                    System.out.println("COUCOU");
+                if(++nombre_relance> 10){ //si plus de 10 relances
                     throw new GeneratorException(0);
                 }
             }
-            
+
         }
-        
+
         return tmp;
     }
-    
+
     /**
      * Génération aléatoir de groupes de points de taille inférieur ou égal à 3 en utilisant le nombre de point fournit en paramètre
      * @param nombre_de_points : nombre de points qui devront être utilisés
