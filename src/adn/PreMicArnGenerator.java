@@ -13,24 +13,28 @@ public class PreMicArnGenerator {
      */
     private StructTigeBoucle contrainte;
 
-
     /**
-     * Constructeur par defaut : les contraintes sont aléatoires borné
+     * Constructeur par défaut : les contraintes sont aléatoires bornées
      */
     public PreMicArnGenerator() {
         super();
         contrainte = new StructTigeBoucle();
     }
 
+    /**
+     * Constructeur avec paramètre 
+     * @param contrainte : contraintes que devra respecter la génération aléatoire.
+     */
     public PreMicArnGenerator(StructTigeBoucle contrainte) {
         super();
         this.contrainte = contrainte;
     }
-    
+
     /**
-     * Convertie un squelette de parenthèse et de point en une structre de nucléotide valide.
+     * Convertie un squelette de parenthèses et de points en une structure de nucléotides valide.
      * @param skeleton : contrainte de génération
-     * @return une chaîne de nucléotide basé sur le squelette passé en paramètre.
+     * @return une chaîne de nucléotides basé sur le squelette passé en paramètre.
+     * @throws GeneratorException : si un caractère autre qu'un nucléotide apparaît
      */
     public StringBuffer convertBoneToPreMiC(StringBuffer skeleton) throws GeneratorException{
         StringBuffer result = new StringBuffer(); // chaîne résultat
