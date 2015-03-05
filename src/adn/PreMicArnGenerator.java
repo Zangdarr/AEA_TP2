@@ -219,12 +219,19 @@ public class PreMicArnGenerator {
         return str;
     }
 
-    
+
+    /**
+     * Génère un caractère non apparieable à c parmi A,U,C et G en respectant la règle de complémentarité faible. 
+     * Si 'z' est passé en paramètre alors un caractère parmi les quatres sera renvoyé au hasard.
+     * @param c
+     * @return un caractère non complémentaire à c ou un au hasard
+     * @throws GeneratorException
+     */
     private char genNonApparieNucleotide(char c) throws GeneratorException {
         SecureRandom rnd = new SecureRandom();
         int choice;
         char result = ' ';
-        
+
         switch(c){
         case 'A' : 
             choice = rnd.nextInt(3);
@@ -248,17 +255,24 @@ public class PreMicArnGenerator {
             break;
         default : 
             throw new GeneratorException(1);
-        
+
         }
         return result;
     }
-    
+
+    /**
+     * Génère un caractère apparieable à c parmi A,U,C et G en respectant la règle de complémentarité faible. 
+     * Si 'z' est passé en paramètre alors un caractère parmi les quatres sera renvoyé au hasard.
+     * @param c
+     * @return un caractère complémentaire à c ou un au hasard
+     * @throws GeneratorException
+     */
     private char genApparieNucleotide(char c) throws GeneratorException {
 
         SecureRandom rnd = new SecureRandom();
         int choice;
         char result = ' ';
-        
+
         switch(c){
         case 'A' : 
             result =  'U';
@@ -284,6 +298,12 @@ public class PreMicArnGenerator {
         }
         return result;
     }
+
+    /**
+     * Génère une paire de nucléotides apparieables aléatoirement
+     * @return deux caractères non apparieables au hasard
+     * @throws GeneratorException 
+     */
     private String genPaireNonApparieNucleotide() throws GeneratorException {
         SecureRandom rand = new SecureRandom();
         
@@ -295,8 +315,9 @@ public class PreMicArnGenerator {
     }
 
     /**
-     * Génère une paire de nucléotides apparieable aléatoirement
-     * @return
+     * Génère une paire de nucléotides apparieables aléatoirement
+     * @return deux caractères apparieables au hasard
+     * @throws GeneratorException 
      */
     private String genPaireApparieNucleotide() throws GeneratorException {
         SecureRandom rand = new SecureRandom();
