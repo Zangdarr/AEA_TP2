@@ -31,6 +31,14 @@ Avec :
 	<tailleTerm>     : taille de la boucle terminale
 ```
 
+Exemple :
+
+```
+$ java -jar structGenerator.jar 100 32 8
+((((((..(((((..(((...(((...(((...(((...(((((((((........))))))..)))).)))..))).)))))).)))..)))...))))
+AAGCUCGACAGGUAUCUCAUGUAUCUUUUAUGAUAAAUCAUCAGGUUGCGAUCCGAUGGCCUGAGGUUUUGUCCGGGAUAGAGAACCUGCGGAGACGUUU
+```
+
 Architecture
 ------------
 
