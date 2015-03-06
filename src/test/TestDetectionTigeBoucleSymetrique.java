@@ -9,6 +9,11 @@ import adn.StructTigeBoucle;
 import algo.DetectionTigeBoucleSymetrique;
 import exception.GeneratorException;
 
+/**
+ * Classe de tests pour la classe DetectionTigeBoucleSymetrique
+ * 
+ * @author Quentin Baert & Alexandre Verkyndt
+ */
 public class TestDetectionTigeBoucleSymetrique {
 
 	@Test
