@@ -11,9 +11,9 @@ Le travail était à diviser en 3 sous tâches :
 
 * Sous tâche 1 : Écriture d'un simulateur de structures tige/boucle
 * Sous tâche 2 : Écriture d'un algorithme de recherche des structures tige/boucle dans une séquence génomique
-* Sous tâche 3 : Éxploration des données biologiques à la recherche des pré-microARN
+* Sous tâche 3 : Exploration des données biologiques à la recherche des pré-microARN
 
-Seule la première sous tâche a été réalisée en entier.  
+Seule la première sous tâche a été réalisée en entière.  
 La seconde a été commencée, la détection de structure tige/boucle symétriques a notamment été codée.  
 La troisième n'a pas été abordée.
 
@@ -96,3 +96,5 @@ Tout le code du générateur a été commenté et documenté.
 
 La détection de structure tige/boucle symétrique se fait grâce à deux pointeurs : l'un pointant sur le début de la séquence, l'autre sur la fin.  
 Tant que les deux pointeurs ne se sont pas rencontrés, l'un avance et l'autre recule sur la séquence. Lors de ce parcours, il s'agit ensuite de vérifier que la séquence pour l'instant parcourue remplie toutes les conditions pour être considérée comme une structure tige/boucle.
+
+Pour voir des exemples de détection, se référer au package `test` et à la classe `TestDetectionTigeBoucleSymetrique`.
