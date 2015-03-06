@@ -1,9 +1,24 @@
 package algo;
 
+/**
+ * Classe permettant de savoir si une sequence génomique représente une
+ * structure tige boucle symetrique ou non
+ * 
+ * @author Quentin Baert & Alexandre Verkyndt
+ */
 public class DetectionTigeBoucleSymetrique {
 	
+	/**
+	 * Sequence dont on souhaite savoir si elle est une structure tige/boucle ou non
+	 */
 	private String sequence;
 	
+	/**
+	 * Constructeur
+	 * 
+	 * @param sequence
+	 * 			sequence dont on souhaite savoir si elle est une structure tige/boucle ou non	
+	 */
 	public DetectionTigeBoucleSymetrique(String sequence) {
 		this.sequence = sequence;
 	}
@@ -21,6 +36,11 @@ public class DetectionTigeBoucleSymetrique {
 		}
 	}
 	
+	/**
+	 * Detecte si la sequence passee a la construction est une structure tige/boucle symetrique ou non
+	 * 
+	 * @return true si la sequence est un structure tige/boucle symetrique, false sinon
+	 */
 	public boolean detect() {
 		int pos1 = 0;
 		int pos2 = this.sequence.length() - 1;
