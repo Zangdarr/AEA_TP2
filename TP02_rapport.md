@@ -20,10 +20,36 @@ La troisième n'a pas été abordée.
 Utilisation
 -----------
 
-Aucun exécutable n'est fournis avec ce TP.
+* Pour générer une structure tige/boucle depuis quelques paramètres
+
+```
+java -jar structGenerator.jar <tailleSequence> <nb> <tailleTerm>
+
+Avec :
+	<tailleSequence> : taille de la structure à générer
+	<nb>             : nombre de boucles internes
+	<tailleTerm>     : taille de la boucle terminale
+```
 
 Architecture
 ------------
+
+```
+src
+  |_ adn
+  |_ algo
+  |_ exception
+  |_ main
+  |_ test
+```
+
+* Le package `adn` contient toutes les classes permettant de générer une structure tige/boucle
+
+* Le package `algo` contient la classe qui permet de déterminer si une sequence génomique est une structure tige/boucle symétrique
+
+* le package `main` contient la classe main qui a servie à la génération du `.jar` fourni
+
+* le package `test` contient les tests
 
 
 Algorithmes
@@ -57,3 +83,8 @@ UCCUCACGACACCCCGCCCUUACCCGGUACCCGGUUGACUGUGGGUCUAUCUCCGGCCUAGGGGGUGUGCGGUGGGG
 ```
 
 Tout le code du générateur a été commenté et documenté.
+
+### Détection d'une structure tige/boucle symétrique
+
+La détection de structure tige/boucle symétrique se fait grâce à deux pointeurs : l'un pointant sur le début de la séquence, l'autre sur la fin.  
+Tant que les deux pointeurs ne se sont pas rencontrés, l'un avance et l'autre recule sur la séquence. Lors de ce parcours, il s'agit ensuite de vérifier que la séquence pour l'instant parcourue remplie toutes les conditions pour être considérée comme une structure tige/boucle.
