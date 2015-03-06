@@ -4,6 +4,11 @@ import adn.PreMicArnGenerator;
 import adn.StructTigeBoucle;
 import exception.GeneratorException;
 
+/**
+ * Main servant a generer une structure tige/boucle avec quelques paramètres
+ * 
+ * @author Quentin Baert et Alexandre Verkyndt
+ */
 public class GenerationTigeBoucleMain {
 
 	public static void printInfo() {
