@@ -15,9 +15,9 @@ public class GenerationTigeBoucleMain {
 		System.out.println("java -jar structGenerator.jar <tailleSequence> <nb> <tailleTerm>");
 		System.out.println();
 		System.out.println("Avec :");
-		System.out.println("\t\t\t <tailleSequence> : taille de la structure à générer");
-		System.out.println("\t\t\t <nb>             : nombre de boucles internes");
-		System.out.println("\t\t\t <tailleTerm>     : taille de la boucle terminale");
+		System.out.println("\t<tailleSequence> : taille de la structure à générer");
+		System.out.println("\t<nb>             : nombre de boucles internes");
+		System.out.println("\t<tailleTerm>     : taille de la boucle terminale");
 	}
 	public static void main(String[] args) throws GeneratorException {
 		if (args.length < 3) {
